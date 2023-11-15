@@ -11,37 +11,98 @@
     <header class="sticky top-0 bg-white w-full z-10">
         <div class="flex items-center justify-center">
             <h1 class="text-2xl font-thin text-slate-900 text-violet-500">Frandles : Under Construction</h1>
-            <img class=" h-20 w-30" src="src/logo.png" />
+            <img class="h-20 w-30 m-2" src="src/logo.png" />
         </div>
     </header>
-    <div class="grid grid-cols-1 m-4">
-        <div class="flex items-center justify-center">
-            <div class="bg-white shadow rounded p-6 max-w-md">
-                <h1 class="text-2xl font-semibold text-slate-900 text-violet-500 mb-4">
-                    About Us
-                </h1>
-                <p class="text-sm text-slate-700">
-                    My name is Francesca Stewart, and I am the creator of Frandles!
-                    I am a third-year Software Engineering student at UNBF.
-                    My goal with Frandles is to make you your dream candle!
-                    Every candle you purchase is hand-poured by myself in my kitchen and
-                    made from 100% soy wax.
-                </p>
-            </div>
-        </div>
-    </div>
+    <nav class="bg-white p-4">
+        <ul class="flex space-x-4 items-center justify-center text-violet-500">
+            <li><a href="#home" >Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#classic">Classic Frandles</a></li>
+            <li><a href="#coming">Coming Soon</a></li>
+        </ul>
+    </nav>
 
-    <div class="grid grid-cols-1 m-4">
-        <div class="flex items-center justify-center">
-            <div class="flex flex-wrap">
-                <div class="flex-auto w-48 relative">
-                    <img src="src/cookiedoe.png" alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+    <!-- About Section -->
+    <section id="about" class="grid m-4">
+    <div class="flex items-center justify-center">
+        <div class="flex flex-wrap group">
+            <div class="flex items-center m-1">
+                <div class="bg-white shadow rounded p-7 max-w-md w-full">
+                    <h1 class="text-2xl font-semibold text-slate-900 text-violet-500 mb-4">
+                        About Us
+                    </h1>
+                    <p class="text-sm text-slate-700">
+                        My name is Francesca Stewart, and I am the creator of Frandles!
+                        I am a third-year Software Engineering student at UNBF.
+                        My goal with Frandles is to make you your dream candle!
+                        Every candle you purchase is hand-poured by myself in my kitchen and
+                        made from 100% soy wax.
+                    </p>
+                </div>
+            </div>
+            <div class="flex items-center m-1">
+                <div class="bg-white shadow rounded p-6 max-w-md w-full">
+                    <h1 class="text-2xl font-semibold text-slate-900 text-violet-500 mb-4">
+                        Getting a Frandle
+                    </h1>
+                    <p class="text-sm text-slate-700">
+                        There are currently three options to get a frandle:
+                        <br>
+                        1. Contact me through Instagram DM @frandles.co
+                        <br>
+                        2. Contact me through email frandles.company@gmail.com
+                        <br>
+                        3. Visit our amazing carriers in person! The beautiful Fresh Vintage NB on xx Regent St Fredericton, or the
+                        tasty Calico Cafe on xx in Miramichi!
+                    </p>
                 </div>
             </div>
         </div>
-        
     </div>
+</section>
+
+
+<section id="coming" class="grid m-4">
+    <div class="flex items-center justify-center">
+        <div class="flex flex-wrap group">
+            <div class="bg-white shadow rounded">
+                <div class="flex">
+                    <div class="w-1/3 relative">
+                        <img src="src/cookiedoe.png" alt="" class="w-full h-full object-cover transition duration-500 ease-in-out transform group-hover:brightness-75" />
+                    </div>
+                    <div class="w-1/3 relative group">
+                        <img src="src/santa.png" alt="" class="w-full h-full object-cover transition duration-500 ease-in-out transform group-hover:brightness-75" />
+                        <span class="invisible group-hover:visible absolute inset-0 flex items-center justify-center text-white text-lg font-bold z-10">
+                            The Winter Collection
+                        </span>
+                    </div>
+                    <div class="w-1/3 relative">
+                        <img src="src/b2dec.png" alt="" class="w-full h-full object-cover transition duration-500 ease-in-out transform group-hover:brightness-75" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
     
+    <section id="classic" class="grid grid-cols-1 m-4">
+        <div class="flex items-center justify-center">
+            <div class="bg-white shadow rounded p-6 max-w-md">
+                <h1 class="text-2xl font-semibold text-slate-900 text-violet-500 mb-4">
+                    Classic Frandles
+                </h1>
+                <p class="text-sm text-slate-700 text-violet-400">
+                    Classic scents will be available every restock, as well as at
+                    your favorite Miramichi and Fredericton Shops!
+                </p>
+                <p class="text-xs text-slate-400">
+                    <li>Cereal Killer - Fruit Loops</li>
+                </p>
+            </div>
+        </div>
+    </section>
 
     <div class="grid grid-cols-1 m-4">
         <div class="flex items-center justify-center">
