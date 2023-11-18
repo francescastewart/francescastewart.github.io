@@ -10,7 +10,7 @@
 <body class="bg-gradient-to-br from-amber-100 to-amber-300 m-4">
     <header class="sticky top-0 bg-white w-full z-10">
         <div class="flex items-center justify-center">
-            <h1 class="text-2xl font-thin text-rose-400">Frandles : Under Construction</h1>
+            <h1 class="text-2xl font-semibold text-rose-400">Frandles : Under Construction</h1>
             <img class="h-20 w-30 m-2" src="src/logo.png" />
         </div>
     </header>
@@ -23,12 +23,12 @@
         </ul>
     </nav>
 
-    <!-- About Section -->
-    <section id="about" class="grid m-4">
+<!-- About Section -->
+<section id="about" class="grid m-4">
     <div class="flex items-center justify-center">
         <div class="flex flex-wrap group">
             <div class="flex items-center m-1">
-                <div class="bg-white shadow rounded p-7 max-w-md w-full">
+                <div class="bg-white shadow rounded p-7 max-w-md w-full flex flex-col h-full">
                     <h1 class="text-2xl font-semibold text-rose-400 mb-4">
                         About Us
                     </h1>
@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="flex items-center m-1">
-                <div class="bg-white shadow rounded p-6 max-w-md w-full">
+                <div class="bg-white shadow rounded p-6 max-w-md w-full flex flex-col h-full">
                     <h1 class="text-2xl font-semibold text-rose-400 mb-4">
                         Getting a Frandle
                     </h1>
@@ -93,122 +93,128 @@
                 <h1 class="text-2xl font-semibold text-rose-400 mb-4">
                     Classic Frandles
                 </h1>
-                <p class="text-sm text-slate-700">
+                <p class="text-sm text-rose-400">
                     Classic scents will be available every restock, as well as at
                     your favorite Miramichi and Fredericton Shops!
                 </p>
-                <p class="text-xs">
-                    <li>Cereal Killer - Fruit Loops</li>
+                <br>
+                <p class="text-sm text-slate-800">
+                    Cereal Killer - Fruit Loops<br>
+                    Rise and Grind - Espresso<br>
+                    Spill the Tea - Pumpkin Oatmilk Chai<br>
+                    Cinnfully Sweet - Cinnamon Buns<br>
+                    Pyjama Jam - Warm Flannel and Green Tea<br>
+                    Mountain Man - Sandalwood, Patchoulli, and Mango<br>
                 </p>
             </div>
         </div>
     </section>
 
-    <div class="grid m-4">
-        <div class="flex items-center justify-center">
-            <div class="flex flex-wrap group">
-                <div class="flex items-center m-2">
-                    <div class="bg-white shadow rounded p-6 max-w-md">
-                        <div class="flex font-sans">
-                            <form class="flex-auto p-6">
-                                <div class="flex flex-wrap">
-                                <h1 class="flex-auto text-lg font-semibold text-rose-400">
-                                    8oz Candle
-                                </h1>
-                                <div class="text-lg font-semibold text-slate-500">
-                                    $20.00
-                                </div>
-                                <div class="w-full flex-auto text-sm font-medium text-rose-400 mt-2">
-                                    Sold Out
-                                </div>
-                            </div>
-                            <div class="flex space-x-4 mb-6 text-xs font-medium">
-                                <div class="flex-auto flex space-x-4">
-                                    <button class="h-10 w-30 px-6 font-semibold rounded-md bg-black text-white" type="submit">
-                                        Notify Me
-                                    </button>
-                                    <button class="h-10 w-40 px-6 flex-wrap rounded-md border border-slate-200 text-slate-900" type="button">
-                                        Add to Bag
-                                    </button>
-                                </div>
-                                <button class="flex-auto flex items-center justify-center w-9 h-9 rounded-md text-slate-300 border border-slate-200" type="button" id='Like8oz' aria-label="Like">
-                                    <svg width="20" height="20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
-                                    </svg>
-                                </button>
-                            </div>
-                                <p class="text-sm text-slate-700">
-                                    Free shipping on all Miramichi and Fredericton orders.
-                                </p>
-                            </form>
+<!-- 8oz candles -->
+<div class="grid m-4">
+    <div class="flex items-center justify-center">
+        <div class="bg-white shadow rounded max-w-lg w-full">
+            <div class="flex p-6">
+                <div class="w-1/2 pr-6">
+                    <div class="flex flex-wrap">
+                        <h1 class="flex-auto text-lg font-semibold text-rose-400">
+                            8oz Candle
+                        </h1>
+                        <div class="text-lg font-semibold text-slate-500">
+                            $20.00
                         </div>
                     </div>
-                </div>
-                <div class="flex items-center justify-center">
-                    <div class="flex items-center m-2">
-                        <div class="bg-white shadow rounded p-4 max-w-md">
-                            <div class="flex font-sans">
-                                <div class="flex-auto w-full relative">
-                                    <img src="src/cerealkiller.png" alt="" class="w-full h-full object-cover" loading="lazy" />
-                                </div>
-                                
-                            </div>
-                        </div>
+                    <div class="flex flex-col space-y-4 mb-6 text-xs font-medium">
+                        <button class="h-10 w-full px-3 font-semibold rounded-md bg-black text-white" type="submit">
+                            Add to Order
+                        </button>
+                        <select class="h-10 px-3 w-full rounded-md border border-color-slate-200">
+                            <option value="cereal">Cereal Killer</option>
+                                            <option value="cookie">Cookie Doe</option>
+                                            <option value="santa">Santa's Slay</option>
+                                            <option value="b2d">Back to December</option>
+                                            <option value="coffee">Rise and Grind</option>
+                                            <option value="chai">Spill the Tea</option>
+                                            <option value="flannel">Pyjama Jam</option>
+                                            <option value="cinnamonbun">Cinnamon Buns</option>
+                                            <option value="man">Mountain Man</option>
+                        </select>
+                        <select class="h-10 px-3 w-full rounded-md border border-color-slate-200">
+                            <option value="">Quantity</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                        </select>
                     </div>
+                    <p class="text-sm text-slate-700">
+                        Free shipping on all Miramichi and Fredericton orders.
+                    </p>
                 </div>
+                <div class="w-1/2 relative">
+                    <img src="src/cerealkiller.png" alt="" class="w-full h-full object-cover" loading="lazy" />
+                </div>
+            </div>
         </div>
     </div>
-    </div>
+</div>
 
-    <!--4oz candles-->
+    <!-- 4oz candles -->
     <div class="grid m-4">
         <div class="flex items-center justify-center">
             <div class="flex flex-wrap group">
                 <div class="flex items-center m-2">
-                    <div class="bg-white shadow rounded p-6 max-w-md">
+                    <div class="bg-white shadow rounded max-w-sm w-full">
                         <div class="flex font-sans">
                             <form class="flex-auto p-6">
                                 <div class="flex flex-wrap">
-                                <h1 class="flex-auto text-lg font-semibold text-rose-400">
-                                    4oz Candle
-                                </h1>
-                                <div class="text-lg font-semibold text-slate-500">
-                                    $12.00
+                                    <h1 class="flex-auto text-lg font-semibold text-rose-400">
+                                        4oz Candle
+                                    </h1>
+                                    <div class="text-lg font-semibold text-slate-500">
+                                        $12.00
+                                    </div>
                                 </div>
-                                <div class="w-full flex-auto text-sm font-medium text-rose-400 mt-2">
-                                    Sold Out
+                                <div class="flex space-x-4 mb-6 text-xs font-medium">
+                                        <button class="h-10 w-30 px-3 font-semibold rounded-md bg-black text-white" type="submit">
+                                            Add
+                                        </button>
+                                        <select class="px-3 rounded-md border border-color-slate-200">
+                                            <option value="cereal">Cereal Killer</option>
+                                            <option value="cookie">Cookie Doe</option>
+                                            <option value="santa">Santa's Slay</option>
+                                            <option value="b2d">Back to December</option>
+                                            <option value="coffee">Rise and Grind</option>
+                                            <option value="chai">Spill the Tea</option>
+                                            <option value="flannel">Pyjama Jam</option>
+                                            <option value="cinnamonbun">Cinnamon Buns</option>
+                                            <option value="man">Mountain Man</option>
+                                        </select>
+                                        <select class="px-3 rounded-md border border-color-slate-200">
+                                            <option value="">Quantity</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                        </select>
                                 </div>
-                            </div>
-                            <div class="flex space-x-4 mb-6 text-xs font-medium">
-                                <div class="flex-auto flex space-x-4">
-                                    <button class="h-10 w-30 px-6 font-semibold rounded-md bg-black text-white" type="submit">
-                                        Notify Me
-                                    </button>
-                                    <button class="h-10 w-40 px-6 flex-wrap rounded-md border border-slate-200 text-slate-900" type="button">
-                                        Add to Bag
-                                    </button>
-                                </div>
-                                <button class="flex-auto flex items-center justify-center w-9 h-9 rounded-md text-slate-300 border border-slate-200" type="button" aria-label="Like">
-                                    <svg width="20" height="20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
-                                    </svg>
-                                </button>
-                            </div>
-                                <p class="text-sm text-slate-700">
-                                    Free shipping on all Miramichi and Fredericton orders.
-                                </p>
-                            </form>
-                        </div>
+                            <p class="text-sm text-slate-700">
+                                Free shipping on all Miramichi and Fredericton orders.
+                            </p>
+                        </form>
                     </div>
                 </div>
-                <div class="flex items-center justify-center">
-                    <div class="flex items-center m-2">
-                        <div class="bg-white shadow rounded p-4 max-w-md">
-                            <div class="flex font-sans">
-                                <div class="flex-auto w-full relative">
-                                    <img src="src/4ozss.png" alt="" class="w-full h-full object-cover" loading="lazy" />
-                                </div>
-                                
+            </div>
+            <div class="flex items-center justify-center">
+                <div class="flex items-center m-2">
+                    <div class="bg-white shadow rounded p-4 max-w-md">
+                        <div class="flex font-sans">
+                            <div class="flex-auto w-full relative aspect-w-1 aspect-h-1">
+                                <img src="src/4ozss.png" alt="" class="w-full h-full object-cover aspect-w-1 aspect-h-1" loading="lazy" />
                             </div>
                         </div>
                     </div>
@@ -216,5 +222,6 @@
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
