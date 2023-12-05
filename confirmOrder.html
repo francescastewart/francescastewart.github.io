@@ -10,72 +10,10 @@
 <body class="bg-gradient-to-br from-amber-100 to-amber-200 m-4">
     <header class="sticky top-0 bg-white w-full z-10">
         <div class="flex items-center justify-center">
-            <h1 class="text-2xl font-semibold text-rose-400">Frandles : Under Construction</h1>
+            <h1 class="text-2xl font-semibold text-rose-400">Confirm Frandle Order</h1>
             <img class="h-20 w-30 m-2" src="src/logo.png" />
         </div>
     </header>
-    <nav class="bg-white p-4">
-        <ul class="flex space-x-4 items-center justify-center text-rose-400">
-            <li><a href="index.html" >Home</a></li>
-            <li><a href="classic.html">Classic Frandles</a></li>
-            <li><a href="comingsoon.html">Limited Edition</a></li>
-            <li><a href="catalog.html">Make an Order</a></li>
-        </ul>
-    </nav>
-    <section id="order" class="grid m-4">
-        <div class="flex items-center justify-center">
-            <div class="flex flex-wrap group">
-                <!-- 8oz candles -->
-                <div class="grid m-4">
-                    <div class="flex items-center justify-center">
-                        <div class="bg-white shadow rounded max-w-lg w-full">
-                            <div class="flex p-6">
-                                <div class="w-1/2 pr-6">
-                                    <div class="flex flex-wrap my-3">
-                                        <h1 class="flex-auto text-lg font-semibold text-rose-400">
-                                            8oz Candle
-                                        </h1>
-                                        <div class="text-lg font-semibold text-slate-500">
-                                            $20.00
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-col space-y-4 mb-6 text-xs font-medium">
-                                        <label for="scent8" class="text-rose-400">Scent</label>
-                                        <select id="scent8" class="h-10 px-3 w-full rounded-md border border-color-slate-200">
-                                            <option value="Cereal Killer">Cereal Killer</option>
-                                            <option value="Cookie Doe">Cookie Doe</option>
-                                            <option value="Santa's Slay">Santa's Slay</option>
-                                            <option value="Back to December">Back to December</option>
-                                            <option value="Rise and Grind">Rise and Grind</option>
-                                            <option value="Spill the Tea">Spill the Tea</option>
-                                            <option value="Pyjama Jam">Pyjama Jam</option>
-                                            <option value="Cinnamon Buns">Cinnamon Buns</option>
-                                            <option value="Mountain Man">Mountain Man</option>
-                                        </select>
-                                        <label for="quantity8" class="text-rose-400">Quantity</label>
-                                        <select id="quantity8" class="h-10 px-3 w-full rounded-md border border-color-slate-200">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                        </select>
-                                        <button class="h-10 w-full px-3 font-semibold rounded-md bg-black text-white" type="button" onclick="add8oz(document.getElementById('scent8').value, document.getElementById('quantity8').value)">
-                                            Add to Order
-                                        </button>
-                                    </div>
-                                    <p class="text-sm text-slate-700">
-                                        Free delivery on all Miramichi and Fredericton orders.
-                                    </p>
-                                </div>
-                                <div class="w-1/2 relative">
-                                    <img src="src/cerealkiller.png" alt="" class="w-full h-full object-cover" loading="lazy" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                     <!-- 4oz candles -->
                     <div class="grid m-4">
@@ -85,100 +23,27 @@
                                     <div class="w-1/2 pr-6">
                                         <div class="flex flex-wrap my-3">
                                             <h1 class="flex-auto text-lg font-semibold text-rose-400">
-                                                4oz Candle
+                                                Order Summary
                                             </h1>
-                                            <div class="text-lg font-semibold text-slate-500">
-                                                $12.00
-                                            </div>
                                         </div>
                                         <div class="flex flex-col space-y-4 mb-6 text-xs font-medium">
-                                            <label for="scent4" class="text-rose-400">Scent</label>
-                                            <select id="scent4" class="h-10 px-3 w-full rounded-md border border-color-slate-200">
-                                                <option value="Cereal Killer">Cereal Killer</option>
-                                                <option value="Cookie Doe">Cookie Doe</option>
-                                                <option value="Santa's Slay">Santa's Slay</option>
-                                                <option value="Back to December">Back to December</option>
-                                                <option value="Rise and Grind">Rise and Grind</option>
-                                                <option value="Spill the Tea">Spill the Tea</option>
-                                                <option value="Pyjama Jam">Pyjama Jam</option>
-                                                <option value="Cinnamon Buns">Cinnamon Buns</option>
-                                                <option value="Mountain Man">Mountain Man</option>
+                                            <label for="customer">Name</label>
+                                            <textarea id="customer" placeholder="Fill in name"></textarea>
+                                            <label for="customer">Email</label>
+                                            <textarea id="customeremail" placeholder="Fill in email"></textarea>
+                                            <label for="customerlocation">City of Pickup/Dropoff</label>
+                                            <select id="customerlocation" class="h-10 px-3 w-full rounded-md border border-color-slate-200">
+                                                <option value="Miramichi">Miramichi</option>
+                                                <option value="Fredericton">Fredericton</option>
                                             </select>
-                                            <label for="quantity4" class="text-rose-400">Quantity</label>
-                                            <select id="quantity4" class="h-10 px-3 w-full rounded-md border border-color-slate-200">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                            </select>
-                                            <button class="h-10 w-full px-3 font-semibold rounded-md bg-black text-white" type="button" onclick="add4oz(document.getElementById('scent4').value, document.getElementById('quantity4').value)">
-                                                Add to Order
-                                            </button>
                                         </div>
-                                        <p class="text-sm text-slate-700">
-                                            Free shipping on all Miramichi and Fredericton orders.
-                                        </p>
-                                    </div>
-                                    <div class="w-1/2 relative">
-                                        <img src="src/4ozss.png" alt="" class="w-full h-full object-cover" loading="lazy" />
-                                    </div>
+                                    </div>               
                                 </div>
                             </div>
                         </div>
                     </div>
             </div>
         </div>
-    </section>
 
-    <div class="grid m-4">
-        <div class="flex items-center justify-center">
-            <div class="flex items-center justify-center">
-                <div class="bg-white shadow rounded max-w-lg w-full">
-                    <div class="flex p-6">
-                        <div class="">
-                            <h1 class="flex-auto text-lg font-semibold text-rose-400">
-                                Your Order
-                            </h1>
-                            <textarea id="message" rows="4" class="block p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Add items to cart to begin order"></textarea>
-                            <p>Total: $<span id="total">0.00</span> CAD</p>
-                            <button id="submit" type="button" class="h-10 w-full m-2 px-3 font-semibold rounded-md bg-rose-400 text-white text-xs font-medium" onclick="clearOrder()">Clear</button>
-                            <button id="submit" type="button" class="h-10 w-full m-2 px-3 font-semibold rounded-md bg-black text-white text-xs font-medium" onclick="submitOrder()">Submit Order</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function submitOrder() {
-            document.getElementById('message').value;
-
-        }
-
-        function add8oz(scent, quantity) {
-            document.getElementById('message').value+= "\n";
-            document.getElementById('message').value+= "8oz " + scent + " x " + quantity;
-            updateTotal(20);
-        }
-
-        function add4oz(scent, quantity) {
-            document.getElementById('message').value+= "\n";
-            document.getElementById('message').value+= "4oz " + scent + " x " + quantity;
-            updateTotal(12.00);
-        }
-        
-        function clearOrder(){
-            document.getElementById('message').value = "";
-            document.getElementById('total').textContent="0.00";
-        }
-
-        function updateTotal(cost){
-            var total= parseFloat(document.getElementById('total').textContent)
-            document.getElementById('total').textContent= total + cost;
-        }
-    </script>
 </body>
 </html>
