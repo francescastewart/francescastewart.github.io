@@ -185,13 +185,13 @@
         function add8oz(scent, quantity) {
             document.getElementById('message').value+= "\n";
             document.getElementById('message').value+= "8oz " + scent + " x " + quantity;
-            updateTotal(20);
+            updateTotal(20*quantity);
         }
 
         function add4oz(scent, quantity) {
             document.getElementById('message').value+= "\n";
             document.getElementById('message').value+= "4oz " + scent + " x " + quantity;
-            updateTotal(12.00);
+            updateTotal(12.00*quantity);
         }
         
         function clearOrder(){
