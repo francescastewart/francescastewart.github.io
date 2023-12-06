@@ -136,15 +136,28 @@
         <div class="flex items-center justify-center">
             <div class="flex items-center justify-center">
                 <div class="bg-white shadow rounded max-w-lg w-full">
+                    <h1 class="text-lg font-semibold text-rose-400 p-6">
+                        Your Order Form
+                    </h1>
                     <div class="flex p-6">
-                        <div class="">
-                            <h1 class="flex-auto text-lg font-semibold text-rose-400">
-                                Your Order
-                            </h1>
+                        <div class="flex flex-wrap">
+                        
+                            <div class="flex flex-col space-y-4 mb-6 text-xs font-medium">
+                                <label for="customer">Name</label>
+                                <textarea id="customer" placeholder="Fill in name" class="block p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+                                <label for="customer">Email</label>
+                                <textarea id="customeremail" placeholder="Fill in email" class="block p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+                                <label for="customerlocation">City of Pickup/Dropoff</label>
+                                <select id="customerlocation" class="h-10 px-3 w-full rounded-md border border-color-slate-200">
+                                    <option value="Miramichi">Miramichi</option>
+                                    <option value="Fredericton">Fredericton</option>
+                                </select>
+                            </div>
                             <textarea id="message" rows="4" class="block p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Add items to cart to begin order"></textarea>
                             <p>Total: $<span id="total">0.00</span> CAD</p>
                             <button id="submit" type="button" class="h-10 w-full m-2 px-3 font-semibold rounded-md bg-rose-400 text-white text-xs font-medium" onclick="clearOrder()">Clear</button>
                             <button id="submit" type="button" class="h-10 w-full m-2 px-3 font-semibold rounded-md bg-black text-white text-xs font-medium" onclick="submitOrder()">Submit Order</button>
+                            <span id="warning" style="display: none;"  class="text-red-500 text-xs font-medium">Missing customer name, email, or order. Please fill out to continue.</span>
                         </div>
                     </div>
                 </div>
@@ -154,8 +167,18 @@
 
     <script>
         function submitOrder() {
-            document.getElementById('message').value;
-            window.location.href('frandles.ca/confirmOrder.html');
+            var order = document.getElementById('message').value;
+            var customer = document.getElementById('customer').value;
+            var customeremail = document.getElementById('customeremail').value;
+            if(order== "" || customer== "" || customeremail== ""){
+                console.log("missing info");
+                document.getElementById('warning').removeAttribute('style');
+            }else{
+                console.log(order + customer + customeremail);
+            }
+            //console.log(order);
+            //window.open('confirmOrder.html');
+            //window.location.href('frandles.ca/confirmOrder.html');
 
         }
 
