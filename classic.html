@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com/"></script>
 </head>
 <body class="bg-gradient-to-br from-amber-100 to-amber-200 m-4">
+    <!--HEADER-->
     <header class="sticky top-0 bg-white w-full z-10">
         <div class="flex items-center justify-center">
             <h1 class="text-2xl font-semibold text-rose-400">Frandles : Under Construction</h1>
@@ -22,41 +23,30 @@
             <li><a href="catalog.html">Make an Order</a></li>
         </ul>
     </nav>
-<!--Make classic into seperate page and do description and picture of each-->    
-    <section id="classic" class="grid grid-cols-1 m-4">
-        <div class="flex items-center justify-center">
-            <div class="bg-white shadow rounded p-6 max-w-md">
-                <h1 class="text-2xl font-semibold text-rose-400 mb-4">
-                    Classic Frandles
-                </h1>
-                <p class="text-sm text-rose-400">
-                    Classic scents will be available every restock, as well as at
-                    your favorite Miramichi and Fredericton Shops!
-                </p>
-                <br>
-                <p class="text-sm text-slate-800">
-                    Cereal Killer - Fruit Loops<br>
-                    Rise and Grind - Espresso<br>
-                    Spill the Tea - Pumpkin Oatmilk Chai<br>
-                    Cinnfully Sweet - Cinnamon Buns<br>
-                    Pyjama Jam - Warm Flannel and Green Tea<br>
-                    Mountain Man - Sandalwood, Patchoulli, and Mango<br>
-                </p>
-            </div>
+    <!-- END OF HEADER-->
+
+    <div class="py-6 px-4 sm:p-6 md:py-10 md:px-8">
+        <div class="max-w-4xl mx-auto grid grid-cols-1 lg:max-w-5xl lg:gap-x-20 lg:grid-cols-2">
+          <div class="relative p-3 col-start-1 row-start-1 flex flex-col-reverse rounded-lg bg-gradient-to-t from-black/75 via-black/0 sm:bg-none sm:row-start-2 sm:p-0 lg:row-start-1">
+            <h1 class="mt-1 text-lg font-semibold text-white sm:text-slate-900 md:text-2xl dark:sm:text-white">Beach House in Collingwood</h1>
+            <p class="text-sm leading-4 font-medium text-white sm:text-slate-500 dark:sm:text-slate-400">Entire house</p>
+          </div>
+          <div class="grid gap-4 col-start-1 col-end-3 row-start-1 sm:mb-6 sm:grid-cols-4 lg:gap-6 lg:col-start-2 lg:row-end-6 lg:row-span-6 lg:mb-0">
+            <img src="src/pj.png" alt="" class="w-full h-60 object-cover rounded-lg sm:h-52 sm:col-span-2 lg:col-span-full" loading="lazy">
+            <img src="src/cinnabun.png" alt="" class="hidden w-full h-52 object-cover rounded-lg sm:block sm:col-span-2 md:col-span-1 lg:row-start-2 lg:col-span-2 lg:h-32" loading="lazy">
+            <img src="src/blanketcandle.jpg" alt="" class="hidden w-full h-52 object-cover rounded-lg md:block lg:row-start-2 lg:col-span-2 lg:h-32" loading="lazy">
+          </div>
+         
+          <div class="mt-4 col-start-1 row-start-3 self-center sm:mt-0 sm:col-start-2 sm:row-start-2 sm:row-span-2 lg:mt-6 lg:col-start-1 lg:row-start-3 lg:row-end-4">
+            <button type="button" class="bg-rose-400 text-white text-sm leading-6 font-medium py-2 px-3 rounded-lg">Make an Order</button>
+          </div>
+          <p class="mt-4 text-sm leading-6 col-start-1 sm:col-span-2 lg:mt-6 lg:row-start-4 lg:col-span-1 dark:text-slate-400">
+            Classic Frandles are always stocked at your favourite stores; Fresh Vintage and Calico Cafe. These scents will be restocked
+            after they've been sold out. <br>
+
+        </p>
         </div>
-    </section>
-
-<!--pictures-->
-<div class="grid m-4 grid-cols-1">
-    <div class="flex flex-wrap justify-center">
-        <div class="flex items-center relative">
-            <!-- Larger Image -->
-            <img src="src/blanketcandle.jpg" class="max-w-sm m-3">
-            <!--<img src="src/cheryl.JPG" class="max-w-sm m-3">
-            <img src="src/ckoffice.png" class="max-w-sm m-3">-->
     </div>
-</div>
-
 
 </body>
 </html>
