@@ -10,13 +10,21 @@
 
 <body class="bg-amber-100">
     <header class="bg-white shadow">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-gray-800">Inventory</h1>
-            <a href="#" class="text-blue-500 hover:underline">Back to Home</a>
+        <div class="container mx-auto px-4 py-4 flex items-center justify-center">
+            <h1 class="text-lg font-semibold text-rose-400 md:text-2xl dark:text-slate-800">Frandles</h1>
+            <img class="h-20 w-30" src="src/logo.png" />
         </div>
     </header>
+    <nav class="bg-white p-4 dark:bg-slate-400">
+        <ul class="text-sm flex space-x-4 items-center justify-center text-rose-400 dark:text-slate-800 md:text-lg">
+            <li><a href="index.html" class="hover:text-rose-600">Home</a></li>
+            <li><a href="classic.html" class="hover:text-rose-600">Classic Frandles</a></li>
+            <li><a href="comingsoon.html" class="hover:text-rose-600">Limited Edition</a></li>
+            <li><a href="orderform.html" class="hover:text-rose-600">Make an Order</a></li>
+        </ul>
+    </nav>
 
-    <main class="container mx-auto py-8">
+    <main class="container mx-auto py-6 px-4 sm:p-6 md:py-10 md:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-white shadow rounded-lg p-6">
                 <h2 class="text-lg font-semibold mb-4">4oz Candles</h2>
@@ -41,11 +49,30 @@
         </div>
     </main>
 
-    <footer class="bg-white py-4 mt-8">
-        <div class="container mx-auto text-center">
-            <p class="text-gray-600">Contact us at <a href="mailto:info@yourwebsite.com" class="text-blue-500 hover:underline">info@yourwebsite.com</a></p>
+    <div class="py-6 px-4 sm:p-6 md:py-10 md:px-8">
+        <div class="max-w-4xl mx-auto grid grid-cols-1">
+            <figure class="md:flex md:flex-col bg-white rounded-xl p-8 md:p-4 dark:bg-slate-400 shadow-md col-start-1">
+            <div class="flex flex-col items-center lg:flex-row lg:justify-center">
+                <div class="mt-4 p-6 text-center font-medium text-xs max-w-xs md:wax-w-md dark:text-slate-800">
+                    <a class="text-white bg-rose-400 hover:bg-rose-800 focus:ring-4 focus:ring-rose-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none" href="https://www.instagram.com/frandles.co/?img_index=1" target="_blank">Order Through Instagram</a>
+                </div>
+                <div class="mt-4 p-6 text-center font-medium text-xs max-w-xs md:wax-w-md dark:text-slate-800">
+                    <a class="text-white bg-rose-400 hover:bg-rose-800 focus:ring-4 focus:ring-rose-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none" href="mailto:frandles.company@gmail.com?subject=Frandles%20Order">Order Through Email</a>
+                </div>            
+                <div class="mt-4 p-6 text-center font-medium text-xs max-w-xs md:wax-w-md dark:text-slate-800">
+                    <a class="text-white bg-rose-400 hover:bg-rose-800 focus:ring-4 focus:ring-rose-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none" href="https://docs.google.com/forms/d/e/1FAIpQLSfMZbjMvdzQSIJDbvIsPll-_cTfX3-_w5t8osjwsP88_LEFKw/viewform?usp=sf_link" target="_blank">Order Form</a>
+                </div>
+                <div class="mt-4 p-6 text-center font-medium text-xs max-w-xs md:wax-w-md dark:text-slate-800">
+                    <a class="text-white bg-rose-400 hover:bg-rose-800 focus:ring-4 focus:ring-rose-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none" href="https://docs.google.com/forms/d/e/1FAIpQLSfKkQAXf2rEmoCXGAs0gWohdoo_KE0uMweOqO0s5WM5-ZTFdw/viewform?usp=sf_link" target="_blank">Mothers Day Order</a>
+                </div>
+            </div>
+            <p class="py-6 text-md text-center text-rose-400 dark:text-slate-800">
+                Don't live local? Contact me to arrange shipping (shipping fees apply)
+            </p>
+            </figure>
         </div>
-    </footer>
+    </div>
+
 </body>
 
 </html>
