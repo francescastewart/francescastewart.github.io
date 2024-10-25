@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+      a {
+    display: inline-block;
+    color: blue;
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+
+  a:hover {
+    animation: moveAround 0.5s infinite alternate ease-in-out;
+  }
+
+  @keyframes moveAround {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(10px, -5px); }
+    50% { transform: translate(-10px, 10px); }
+    75% { transform: translate(5px, -10px); }
+    100% { transform: translate(-5px, 5px); }
+  }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAD EXAMPLE</title>
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <style>
+        /* Add any additional custom styles here */
+    </style>
+</head>
+
+<body class="bg-gradient-to-r from-pink-300 via-amber-800 to-yellow-400 font-sans">
+    <script>
+        const button = document.getElementById('runawayBtn');
+      
+        // Add mouseover event to make button run away
+        button.addEventListener('mouseover', () => {
+          // Get random position within the viewport, leaving room for the button size
+          const randomX = Math.random() * (window.innerWidth - button.offsetWidth);
+          const randomY = Math.random() * (window.innerHeight - button.offsetHeight);
+          
+          // Apply random position
+          button.style.left = `${randomX}px`;
+          button.style.top = `${randomY}px`;
+        });
+      </script>
+    <header class="bg-red-600 shadow">
+        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-yellow-400">Your Website</h1>
+            <nav>
+                <a href="#" class="text-gray-600 hover:text-gray-800 mx-2">Home</a>
+                <a href="#" class="text-gray-600 hover:text-gray-800 mx-2">About</a>
+                <a href="#" class="text-gray-600 hover:text-gray-800 mx-2">Services</a>
+                <a href="#" class="text-gray-600 hover:text-gray-800 mx-2">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <div>
+        <button id="runawayBtn" class="px-4 py-2 text-white bg-blue-500 rounded-lg absolute">
+            Try to Click Me!
+          </button>
+    </div>
+
+</body>
+
+</html>
