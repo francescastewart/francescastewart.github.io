@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PuzzlePop</title>
+        <script src="https://cdn.tailwindcss.com/"></script>
+    </head>
+    
+    <script>
+        addEventListener("DOMContentLoaded", function () {
+            const container = document.getElementById("easySudokuContainer");
+            
+            const puzzle2 = [
+                [0, 0, 0, 3],
+                [0, 4, 0, 0],
+                [1, 0, 0, 4],
+                [0, 0, 3, 0]
+            ];
+
+            const solvedPuzzle2 = [
+                [2, 1, 4, 3],
+                [3, 4, 1, 2],
+                [1, 3, 2, 4],
+                [4, 2, 3, 1]
+            ];
+            //https://sudoku-puzzles.net/sudoku-4x4-medium/ reference for sudoku
+
+            var currPuzzle =puzzle2; //make random
+            var currSolution = solvedPuzzle2; //make random
+
+            //This function checks the current input and returns the user's input as a 2D array
+            function getSudokuInput(){
+                const inputs = container.querySelectorAll('input');
+                var userPuzzle = [
+                    [0, 0, 0, 0],
+                    [0, 0, 0, 0],
+                    [0, 0, 0, 0],
+                    [0, 0, 0, 0],
+                ];
+                inputs.forEach(input=>{
+                    var row = parseInt(input.dataset.row);
+                    var col = parseInt(input.dataset.col);
+                    var ans = parseInt(input.value)||0;
+                    userPuzzle[row][col]=ans;
+                });
+                return userPuzzle;
+            }
+
+            //This function checks the current input to see if it is the same as the solved input
+            function checkPuzzle(){
+                const feedbackDiv = document.getElementById("feedback");
+                var userPuzzle = getSudokuInput();
+                (JSON.stringify(userPuzzle) == JSON.stringify(currSolution) ?
+                    feedbackDiv.value = "Congrats!"
+                    : feedbackDiv.value = "Incorrect, keep trying!"
+                )
+                    
+            }
+            
+            //This function clears the board but maintains the solved puzzle
+            function resetPuzzle(){
+                const inputs = container.querySelectorAll('input');
+                inputs.forEach(input=>{
+                    var row = parseInt(input.dataset.row);
+                    var col = parseInt(input.dataset.col);
+                    input.value = (currPuzzle[row][col] !== 0 ? currPuzzle[row][col] : '');
+                });
+            }
+
+            function helpPopup(){
+                const helper = document.getElementById('helpModal');
+                helper.style = "display:true"
+            }
+
+            function closeHelpPopup(){
+                const helper = document.getElementById('helpModal');
+                helper.style = "display:none"
+            }
+
+            function createSudokuGrid(puzzle) {
+                container.innerHTML = '';
+
+                puzzle.forEach((row, rowIndex) => {
+                    row.forEach((cell, columnIndex) => {
+                    const cellElement = document.createElement('input');
+                    cellElement.type = 'text';
+                    cellElement.maxLength = 1;
+                    cellElement.value = (cell !== 0 ? cell : '');
+                    cellElement.readOnly = (cell !== 0); 
+                    cellElement.className = `
+                        w-12 h-12 text-center text-lg font-bold
+                        border border-gray-200 focus:border-black-500
+                        ${(rowIndex + columnIndex) % 2 === 0 ? 'bg-white' : 'bg-gray-200'}
+                    `;
+                    cellElement.dataset.row = rowIndex;
+                    cellElement.dataset.col = columnIndex;
+                    container.appendChild(cellElement);
+                    });
+                });
+            }
+
+            createSudokuGrid(currPuzzle);
+
+            document.getElementById("submitButton")
+                .addEventListener("click", checkPuzzle);
+            document.getElementById("resetButton")
+                .addEventListener("click", resetPuzzle);
+            document.getElementById("helpButton")
+                .addEventListener("click", helpPopup);
+            document.getElementById("closeHelpButton")
+                .addEventListener("click", closeHelpPopup);
+        });
+    </script>
+
+    <body class="bg-gray-100 font-sans">
+
+        <section id= "header" class="container mx-auto p-6 md:py-10 md:px-8">
+            <div class="flex items-center justify-center">
+                <div class="bg-white shadow rounded-lg p-6 justify-center">
+                    <h1 class="flex items-center justify-center font-bold">PuzzlePop</h1>
+                </div>
+            </div>
+        </section>
+
+        <section id= "easySudoku" class="container mx-auto py-6 px-4 sm:p-6 md:py-10 md:px-8">
+            <div class="bg-white shadow rounded-lg p-6 flex flex-col items-center">
+                <div id="easySudokuContainer"class="grid grid-cols-4 gap-px bg-gray-400 p-px"></div>
+                <div class="text-center items-center">
+                    <input type="text" readonly="true" id="feedback" class="p-2 w-full max-w-xs text-center"></input>
+                </div>
+            </div>
+        </section>
+
+        <section id= "buttonBox" class="container mx-auto py-6 px-4 sm:p-6 md:py-10 md:px-8">
+            <div class="flex items-center justify-center">
+                <div class="bg-white shadow rounded-lg p-6 ">
+                    <div id="buttonContainer" class="grid grid-cols-3 gap-4 justify-center">
+                        <button id="submitButton" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg">Submit</button>
+                        <button id="resetButton" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Reset</button>
+                        <button id="helpButton" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg">Help</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="helpModal" class="container mx-auto p-6 transition" style="display:none;">
+            <div class="flex items-center justify-center">
+                <div class="bg-white shadow rounded-lg p-6 ">
+                <p>
+                    Basic Solving Tips
+                    <br>Single Possibility: If a cell is the only one in its row, column, or region that can contain a particular number, then it must contain that number.
+                    <br>Exclusion: If a number is already present in a row or column, look to place that number in other regions in the same row or column where it is not present.
+                    <br>Double Pairs: If you find two cells in a row, column, or region that can only be two numbers (like 3 and 6), then exclude these two numbers from other cells in that area.
+                    <br>Look for Grid Symmetry: Sometimes, the arrangement of given numbers has a symmetrical pattern that can help predict the placement of other numbers.
+                </p>
+                <button id="closeHelpButton" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg">Close</button>
+                </div>
+            </div>
+        </div>
+
+        
+	</div>
+
+    </body>
+</html>
