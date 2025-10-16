@@ -150,6 +150,9 @@
                 element.addEventListener('click', () => {
                     lastInteractedRow = element.dataset.row
                     lastInteractedCol = element.dataset.col
+
+                    document.querySelectorAll('.sudokuCell').forEach(cell => cell.classList.remove('border-black-500'));
+                    element.classList.add('border-black-500');
                 });
             });
         });
@@ -194,15 +197,15 @@
 
         <div id="helpModal" class="container mx-auto p-6 transition" style="display:none;">
             <div class="flex items-center justify-center">
-                <div class="bg-white shadow rounded-lg p-6 ">
-                <p>
-                    Basic Solving Tips
-                    <br>Single Possibility: If a cell is the only one in its row, column, or region that can contain a particular number, then it must contain that number.
-                    <br>Exclusion: If a number is already present in a row or column, look to place that number in other regions in the same row or column where it is not present.
-                    <br>Double Pairs: If you find two cells in a row, column, or region that can only be two numbers (like 3 and 6), then exclude these two numbers from other cells in that area.
-                    <br>Look for Grid Symmetry: Sometimes, the arrangement of given numbers has a symmetrical pattern that can help predict the placement of other numbers.
-                </p>
-                <button id="closeHelpButton" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg">Close</button>
+                <div class="bg-white shadow rounded-lg p-6 text-center">
+                    <p>
+                        <b>Basic Solving Tips</b>
+                        <br><b>Single Possibility:</b> If a cell is the only one in its row, column, or region that can contain a particular number, then it must contain that number.
+                        <br><b>Exclusion:</b> If a number is already present in a row or column, look to place that number in other regions in the same row or column where it is not present.
+                        <br><b>Double Pairs:</b> If you find two cells in a row, column, or region that can only be two numbers (like 3 and 6), then exclude these two numbers from other cells in that area.
+                        <br><b>Look for Grid Symmetry:</b> Sometimes, the arrangement of given numbers has a symmetrical pattern that can help predict the placement of other numbers.
+                    </p>
+                    <button id="closeHelpButton" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg">Close</button>
                 </div>
             </div>
         </div>
