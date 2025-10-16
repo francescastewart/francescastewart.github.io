@@ -11,6 +11,22 @@
         addEventListener("DOMContentLoaded", function () {
             const container = document.getElementById("easySudokuContainer");
             
+            //*********************START OF PUZZLES*********************
+            //https://sudoku-puzzles.net/sudoku-4x4-medium/ reference for sudoku
+            const puzzle1 = [
+                [0, 0, 0, 4],
+                [0, 0, 0, 0],
+                [2, 0, 0, 3],
+                [4, 0, 1, 2]
+            ];
+
+            const solvedPuzzle1 = [
+                [1, 2, 3, 4],
+                [3, 4, 2, 1],
+                [2, 1, 4, 3],
+                [4, 3, 1, 2]
+            ];
+
             const puzzle2 = [
                 [0, 0, 0, 3],
                 [0, 4, 0, 0],
@@ -24,10 +40,13 @@
                 [1, 3, 2, 4],
                 [4, 2, 3, 1]
             ];
-            //https://sudoku-puzzles.net/sudoku-4x4-medium/ reference for sudoku
+            
+            //*********************END OF PUZZLES*********************
 
             var currPuzzle =puzzle2; //make random
             var currSolution = solvedPuzzle2; //make random
+            var lastInteractedRow = 0;
+            var lastInteractedCol = 0;
 
             //This function checks the current input and returns the user's input as a 2D array
             function getSudokuInput(){
@@ -89,8 +108,8 @@
                     cellElement.value = (cell !== 0 ? cell : '');
                     cellElement.readOnly = (cell !== 0); 
                     cellElement.className = `
-                        w-12 h-12 text-center text-lg font-bold
-                        border border-gray-200 focus:border-black-500
+                        sudokuCell w-12 h-12 text-center text-lg font-bold
+                        border border-gray-200 focus:border-black-500 readonly
                         ${(rowIndex + columnIndex) % 2 === 0 ? 'bg-white' : 'bg-gray-200'}
                     `;
                     cellElement.dataset.row = rowIndex;
@@ -100,8 +119,15 @@
                 });
             }
 
-            createSudokuGrid(currPuzzle);
+            function enterVal(num){
+                console.log("here")
+                var lastCell = document.querySelector(`.sudokuCell[data-row="${lastInteractedRow}"][data-col="${lastInteractedCol}"]`);
+                console.log(lastCell)
+                lastCell.value = num;
+            }
 
+            createSudokuGrid(currPuzzle);
+            //Button Function Mapping
             document.getElementById("submitButton")
                 .addEventListener("click", checkPuzzle);
             document.getElementById("resetButton")
@@ -110,6 +136,21 @@
                 .addEventListener("click", helpPopup);
             document.getElementById("closeHelpButton")
                 .addEventListener("click", closeHelpPopup);
+            //Value button mapping
+            document.getElementById("enter1")
+                .addEventListener("click", () => enterVal(1));
+            document.getElementById("enter2")
+                .addEventListener("click", () => enterVal(2));
+            document.getElementById("enter3")
+                .addEventListener("click", () => enterVal(3));
+            document.getElementById("enter4")
+                .addEventListener("click", () => enterVal(4));
+            document.querySelectorAll('.sudokuCell').forEach(element => {
+                element.addEventListener('click', () => {
+                    lastInteractedRow = element.dataset.row
+                    lastInteractedCol = element.dataset.col
+                });
+            });
         });
     </script>
 
@@ -124,8 +165,14 @@
         </section>
 
         <section id= "easySudoku" class="container mx-auto py-6 px-4 sm:p-6 md:py-10 md:px-8">
-            <div class="bg-white shadow rounded-lg p-6 flex flex-col items-center">
+            <div class="bg-white shadow rounded-lg p-6 flex flex-col items-center gap-4">
                 <div id="easySudokuContainer"class="grid grid-cols-4 gap-px bg-gray-400 p-px"></div>
+                <div class="text-center items-center">
+                    <button id="enter1" class="bg-gray-500 text-white font-bold py-2 px-4 rounded-lg">1</button>
+                    <button id="enter2" class="bg-gray-500 text-white font-bold py-2 px-4 rounded-lg">2</button>
+                    <button id="enter3" class="bg-gray-500 text-white font-bold py-2 px-4 rounded-lg">3</button>
+                    <button id="enter4" class="bg-gray-500 text-white font-bold py-2 px-4 rounded-lg">4</button>
+                </div>
                 <div class="text-center items-center">
                     <input type="text" readonly="true" id="feedback" class="p-2 w-full max-w-xs text-center"></input>
                 </div>
