@@ -105,11 +105,11 @@
                     const cellElement = document.createElement('input');
                     cellElement.type = 'text';
                     cellElement.maxLength = 1;
-                    cellElement.value = (cell !== 0 ? cell : '');
-                    cellElement.readOnly = (cell !== 0); 
+                    cellElement.value = (cell !== 0 ? cell : ''); //if the cell is 0 then print blank
+                    cellElement.readOnly = true; 
                     cellElement.className = `
                         sudokuCell w-12 h-12 text-center text-lg font-bold
-                        border border-gray-200 focus:border-black-500 readonly
+                        border border-gray-200 focus:border-black-500 disabled
                         ${(rowIndex + columnIndex) % 2 === 0 ? 'bg-white' : 'bg-gray-200'}
                     `;
                     cellElement.dataset.row = rowIndex;
@@ -119,6 +119,7 @@
                 });
             }
 
+            //This function sets a desired value to the last cell touched on the grid
             function enterVal(num){
                 console.log("here")
                 var lastCell = document.querySelector(`.sudokuCell[data-row="${lastInteractedRow}"][data-col="${lastInteractedCol}"]`);
