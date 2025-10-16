@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>PuzzlePop</title>
         <script src="https://cdn.tailwindcss.com/"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
     </head>
     
     <script>
@@ -74,6 +75,8 @@
                     feedbackDiv.value = "Congrats!"
                     feedbackDiv.classList.remove("text-rose-600");
                     feedbackDiv.classList.add("text-green-700");
+                    const continueDiv = document.getElementById("clickContinue");
+                    continueDiv.classList.remove("hidden")
                 }
                 else{
                     feedbackDiv.value = "Incorrect, keep trying!";
@@ -91,15 +94,6 @@
                 });
             }
 
-            function helpPopup(){
-                const helper = document.getElementById('helpModal');
-                helper.style = "display:true"
-            }
-
-            function closeHelpPopup(){
-                const helper = document.getElementById('helpModal');
-                helper.style = "display:none"
-            }
 
             function createSudokuGrid(puzzle) {
                 container.innerHTML = '';
@@ -136,10 +130,6 @@
                 .addEventListener("click", checkPuzzle);
             document.getElementById("resetButton")
                 .addEventListener("click", resetPuzzle);
-            document.getElementById("helpButton")
-                .addEventListener("click", helpPopup);
-            document.getElementById("closeHelpButton")
-                .addEventListener("click", closeHelpPopup);
             //Value button mapping
             document.getElementById("enter1")
                 .addEventListener("click", () => enterVal(1));
@@ -162,7 +152,7 @@
     </script>
 
     <body class="bg-gradient-to-r from-blue-100 to-green-200 font-sans">
-
+        <!--Add welcome modal here with app description and instructions (carosel of instructions)-->
         <section id= "header" class="container mx-auto p-6 md:py-10 md:px-8">
             <div class="flex items-center text-center justify-center">
                 <h1 class="flex items-center justify-center font-bold text-4xl">PuzzlePop</h1>
@@ -180,6 +170,7 @@
                 </div>
                 <div class="text-center items-center">
                     <input type="text" readonly="true" id="feedback" class="p-2 w-full max-w-xs text-xl text-center text-rose-600"></input>
+                    <a id="clickContinue" class="p-2 w-full max-w-xs text-xl hidden">Click here to continue</a>
                 </div>
             </div>
         </section>
@@ -190,29 +181,37 @@
                     <div id="buttonContainer" class="grid grid-cols-3 gap-4 justify-center">
                         <button id="submitButton" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg">Submit</button>
                         <button id="resetButton" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Reset</button>
-                        <button id="helpButton" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg">Help</button>
+                        <button command="show-modal" commandfor="dialog" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg">Help</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div id="helpModal" class="container mx-auto p-6 transition" style="display:none;">
-            <div class="flex items-center justify-center">
-                <div class="bg-white shadow rounded-lg p-6 text-center">
-                    <p>
-                        <b>Basic Solving Tips</b>
-                        <br><b>Single Possibility:</b> If a cell is the only one in its row, column, or region that can contain a particular number, then it must contain that number.
+        <el-dialog>
+            <dialog id="dialog" aria-labelledby="dialog-title" class="fixed inset-0 size-auto max-h-none max-w-none overflow-y-auto bg-transparent backdrop:bg-transparent">
+                <el-dialog-backdrop class="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"></el-dialog-backdrop>
+                <div tabindex="0" class="flex min-h-full items-end justify-center p-4 text-center focus:outline-none sm:items-center sm:p-0">
+                <el-dialog-panel class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95">
+                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                        <h3 id="dialog-title" class="text-base font-semibold text-gray-900">Basic Solving Tips</h3>
+                        <div class="mt-2">
+                            <p class="text-sm text-gray-500"><br><b>Single Possibility:</b> If a cell is the only one in its row, column, or region that can contain a particular number, then it must contain that number.
                         <br><b>Exclusion:</b> If a number is already present in a row or column, look to place that number in other regions in the same row or column where it is not present.
                         <br><b>Double Pairs:</b> If you find two cells in a row, column, or region that can only be two numbers (like 3 and 6), then exclude these two numbers from other cells in that area.
-                        <br><b>Look for Grid Symmetry:</b> Sometimes, the arrangement of given numbers has a symmetrical pattern that can help predict the placement of other numbers.
-                    </p>
-                    <button id="closeHelpButton" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg">Close</button>
+                        <br><b>Look for Grid Symmetry:</b> Sometimes, the arrangement of given numbers has a symmetrical pattern that can help predict the placement of other numbers.</p>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                    <button type="button" command="close" commandfor="dialog" class="inline-flex w-full justify-center bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg px-3 py-2 text-sm shadow-xs sm:ml-3 sm:w-auto">Close</button>
+                    </div>
+                </el-dialog-panel>
                 </div>
-            </div>
-        </div>
-
-        
-	</div>
+            </dialog>
+        </el-dialog>
 
     </body>
 </html>
