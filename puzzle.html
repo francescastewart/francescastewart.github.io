@@ -70,10 +70,14 @@
             function checkPuzzle(){
                 const feedbackDiv = document.getElementById("feedback");
                 var userPuzzle = getSudokuInput();
-                (JSON.stringify(userPuzzle) == JSON.stringify(currSolution) ?
+                if(JSON.stringify(userPuzzle) == JSON.stringify(currSolution)){
                     feedbackDiv.value = "Congrats!"
-                    : feedbackDiv.value = "Incorrect, keep trying!"
-                )
+                    feedbackDiv.classList.remove("text-rose-600");
+                    feedbackDiv.classList.add("text-green-700");
+                }
+                else{
+                    feedbackDiv.value = "Incorrect, keep trying!";
+                }
                     
             }
             
@@ -107,9 +111,10 @@
                     cellElement.maxLength = 1;
                     cellElement.value = (cell !== 0 ? cell : ''); //if the cell is 0 then print blank
                     cellElement.readOnly = true; 
+                    cellElement.setAttribute("inputmode", "none");
                     cellElement.className = `
                         sudokuCell w-12 h-12 text-center text-lg font-bold
-                        border border-gray-200 focus:border-black-500 disabled
+                        border border-gray-200 focus:border-black-700
                         ${(rowIndex + columnIndex) % 2 === 0 ? 'bg-white' : 'bg-gray-200'}
                     `;
                     cellElement.dataset.row = rowIndex;
@@ -121,9 +126,7 @@
 
             //This function sets a desired value to the last cell touched on the grid
             function enterVal(num){
-                console.log("here")
                 var lastCell = document.querySelector(`.sudokuCell[data-row="${lastInteractedRow}"][data-col="${lastInteractedCol}"]`);
-                console.log(lastCell)
                 lastCell.value = num;
             }
 
@@ -151,20 +154,18 @@
                     lastInteractedRow = element.dataset.row
                     lastInteractedCol = element.dataset.col
 
-                    document.querySelectorAll('.sudokuCell').forEach(cell => cell.classList.remove('border-black-500'));
-                    element.classList.add('border-black-500');
+                    document.querySelectorAll('.sudokuCell').forEach(cell => cell.classList.remove('border-black-700'));
+                    element.classList.add('border-black-700');
                 });
             });
         });
     </script>
 
-    <body class="bg-gray-100 font-sans">
+    <body class="bg-gradient-to-r from-blue-100 to-green-200 font-sans">
 
         <section id= "header" class="container mx-auto p-6 md:py-10 md:px-8">
-            <div class="flex items-center justify-center">
-                <div class="bg-white shadow rounded-lg p-6 justify-center">
-                    <h1 class="flex items-center justify-center font-bold">PuzzlePop</h1>
-                </div>
+            <div class="flex items-center text-center justify-center">
+                <h1 class="flex items-center justify-center font-bold text-4xl">PuzzlePop</h1>
             </div>
         </section>
 
@@ -178,7 +179,7 @@
                     <button id="enter4" class="bg-gray-500 text-white font-bold py-2 px-4 rounded-lg">4</button>
                 </div>
                 <div class="text-center items-center">
-                    <input type="text" readonly="true" id="feedback" class="p-2 w-full max-w-xs text-center"></input>
+                    <input type="text" readonly="true" id="feedback" class="p-2 w-full max-w-xs text-xl text-center text-rose-600"></input>
                 </div>
             </div>
         </section>
