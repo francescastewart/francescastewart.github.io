@@ -189,6 +189,7 @@
                 var lastCell = document.querySelector(`.sudokuCell[data-row="${lastInteractedRow}"][data-col="${lastInteractedCol}"]`);
                 if(!lastCell.classList.contains('.presetSudokuCell')){
                     lastCell.value = num;
+                    lastCell.classList.add('text-gray-500')
                 }
             }
 
@@ -244,10 +245,10 @@
             <div class="bg-white shadow rounded-lg p-6 flex flex-col items-center gap-4">
                 <div id="easySudokuContainer"class="grid grid-cols-4 gap-px bg-gray-400 p-px"></div>
                 <div class="text-center items-center">
-                    <button id="enter1" class="bg-cyan-500 text-white font-bold py-2 px-4 rounded-lg">1</button>
-                    <button id="enter2" class="bg-cyan-500 text-white font-bold py-2 px-4 rounded-lg">2</button>
-                    <button id="enter3" class="bg-cyan-500 text-white font-bold py-2 px-4 rounded-lg">3</button>
-                    <button id="enter4" class="bg-cyan-500 text-white font-bold py-2 px-4 rounded-lg">4</button>
+                    <button id="enter1" class="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-lg">1</button>
+                    <button id="enter2" class="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-lg">2</button>
+                    <button id="enter3" class="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-lg">3</button>
+                    <button id="enter4" class="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-lg">4</button>
                 </div>
                 <div class="text-center items-center">
                     <input type="text" readonly="true" id="feedback" class="p-2 w-full max-w-xs text-xl text-center text-rose-600"></input>
