@@ -108,9 +108,15 @@
                     cellElement.setAttribute("inputmode", "none");
                     cellElement.className = `
                         sudokuCell w-12 h-12 text-center text-lg font-bold
-                        border border-gray-200 focus:border-black-700
+                        border border-gray-200 box-border focus:border-black-700 active:border-black-700
                         ${(rowIndex + columnIndex) % 2 === 0 ? 'bg-white' : 'bg-gray-200'}
                     `;
+                    if ((columnIndex + 1) % 2 === 0 && columnIndex !== puzzle.length - 1) {
+                        cellElement.style.borderRight = '3px solid black';
+                    }
+                    if ((rowIndex + 1) % 2 === 0 && rowIndex !== puzzle.length - 1) {
+                       cellElement.style.borderBottom = '3px solid black';
+                    }
                     cellElement.dataset.row = rowIndex;
                     cellElement.dataset.col = columnIndex;
                     container.appendChild(cellElement);
