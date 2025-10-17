@@ -227,7 +227,10 @@
                 });
             });
             const dialog = document.getElementById("dialog");
-            dialog.showModal(); 
+            if (typeof dialog.showModal !== "function") {
+                dialogPolyfill.registerDialog(dialog);
+            }
+            dialog.showModal();
 
         });
     </script>
