@@ -8,6 +8,12 @@
         <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
     </head>
     
+    <style>
+        .highlighted {
+            background-color: #ffe58f !important; /* light yellow highlight */
+        }
+    </style>
+
     <script>
         addEventListener("DOMContentLoaded", function () {
             const container = document.getElementById("easySudokuContainer");
@@ -94,7 +100,13 @@
                 });
             }
 
+            function highlightCell(e) {
+                // remove highlight from all cells
+                container.querySelectorAll('.highlighted').forEach(c => c.classList.remove('highlighted'));
 
+                // highlight the tapped cell
+                e.currentTarget.classList.add('highlighted');
+            }
             function createSudokuGrid(puzzle) {
                 container.innerHTML = '';
 
@@ -119,6 +131,10 @@
                     }
                     cellElement.dataset.row = rowIndex;
                     cellElement.dataset.col = columnIndex;
+
+                    cellElement.addEventListener('touchstart', highlightCell);
+                    cellElement.addEventListener('click', highlightCell);
+
                     container.appendChild(cellElement);
                     });
                 });
@@ -166,6 +182,7 @@
         </section>
 
         <section id= "easySudoku" class="container mx-auto py-6 px-4 sm:p-6 md:py-10 md:px-8">
+            <div class="flex items-center justify-center">
             <div class="bg-white shadow rounded-lg p-6 flex flex-col items-center gap-4">
                 <div id="easySudokuContainer"class="grid grid-cols-4 gap-px bg-gray-400 p-px"></div>
                 <div class="text-center items-center">
@@ -176,8 +193,11 @@
                 </div>
                 <div class="text-center items-center">
                     <input type="text" readonly="true" id="feedback" class="p-2 w-full max-w-xs text-xl text-center text-rose-600"></input>
-                    <a id="clickContinue" class="p-2 w-full max-w-xs text-xl hidden">Click here to continue</a>
                 </div>
+                <div class="text-center items-center">
+                    <a href="instagram://profile" id="clickContinue" class="p-2 w-full max-w-xs text-xl hidden">Click here to continue</a>
+                </div>
+            </div>
             </div>
         </section>
 
