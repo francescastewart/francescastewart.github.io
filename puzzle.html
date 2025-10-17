@@ -47,12 +47,43 @@
                 [1, 3, 2, 4],
                 [4, 2, 3, 1]
             ];
+
+            const puzzle3 = [
+                [4, 0, 0, 3],
+                [3, 1, 0, 0],
+                [2, 0, 0,1],
+                [0, 0, 2, 0]
+            ];
+
+            const solvedPuzzle3 = [
+                [4, 2, 1, 3],
+                [3, 1, 4, 2],
+                [2, 4, 3,1],
+                [1, 3, 2, 4]
+            ];
+
+            const puzzle4 = [
+                [0, 0, 0, 0],
+                [0, 0, 4, 3],
+                [2, 0, 3,0],
+                [0, 1, 0, 0]
+            ];
+
+            const solvedPuzzle4 = [
+                [4, 3, 1, 2],
+                [1, 2, 4, 3],
+                [2, 4, 3,1],
+                [3, 1, 2, 4]
+            ];
+
             
             //*********************END OF PUZZLES*********************
             const completePuzzle1 = {"puzzle":puzzle1, "solution":solvedPuzzle1}
             const completePuzzle2 = {"puzzle":puzzle2, "solution":solvedPuzzle2}
-            const allPuzzles = [completePuzzle1, completePuzzle2]
-            var random = Math.floor(Math.random() * 2); 
+            const completePuzzle3 = {"puzzle":puzzle3, "solution":solvedPuzzle3}
+            const completePuzzle4 = {"puzzle":puzzle4, "solution":solvedPuzzle4}
+            const allPuzzles = [completePuzzle1, completePuzzle2, completePuzzle3, completePuzzle4]
+            var random = Math.floor(Math.random() * 4); 
             var currPuzzle =allPuzzles[random].puzzle; //make random
             var currSolution = allPuzzles[random].solution; //make random
             var lastInteractedRow = 0;
