@@ -49,7 +49,10 @@
             ];
             
             //*********************END OF PUZZLES*********************
-
+            const completePuzzle1 = {"puzzle":puzzle1, "solution":solvedPuzzle1}
+            const completePuzzle2 = {"puzzle":puzzle2, "solution":solvedPuzzle2}
+            const allPuzzles = [completePuzzle1, completePuzzle2]
+            var random = Math.floor(Math.random() * 4); 
             var currPuzzle =puzzle2; //make random
             var currSolution = solvedPuzzle2; //make random
             var lastInteractedRow = 0;
