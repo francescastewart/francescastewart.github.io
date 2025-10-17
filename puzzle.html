@@ -10,7 +10,7 @@
     
     <style>
         .highlighted {
-            background-color: #ffe58f !important; /* light yellow highlight */
+            background-color: #95e3f3 !important; /* light yellow highlight */
         }
     </style>
 
@@ -52,9 +52,9 @@
             const completePuzzle1 = {"puzzle":puzzle1, "solution":solvedPuzzle1}
             const completePuzzle2 = {"puzzle":puzzle2, "solution":solvedPuzzle2}
             const allPuzzles = [completePuzzle1, completePuzzle2]
-            var random = Math.floor(Math.random() * 4); 
-            var currPuzzle =puzzle2; //make random
-            var currSolution = solvedPuzzle2; //make random
+            var random = Math.floor(Math.random() * 2); 
+            var currPuzzle =allPuzzles[random].puzzle; //make random
+            var currSolution = allPuzzles[random].solution; //make random
             var lastInteractedRow = 0;
             var lastInteractedCol = 0;
 
@@ -126,6 +126,9 @@
                         border border-gray-200 box-border focus:border-black-700 active:border-black-700
                         ${(rowIndex + columnIndex) % 2 === 0 ? 'bg-white' : 'bg-gray-200'}
                     `;
+                    if(cell !== 0){
+                        cellElement.className+='.presetSudokuCell'
+                    }
                     if ((columnIndex + 1) % 2 === 0 && columnIndex !== puzzle.length - 1) {
                         cellElement.style.borderRight = '3px solid black';
                     }
@@ -146,7 +149,9 @@
             //This function sets a desired value to the last cell touched on the grid
             function enterVal(num){
                 var lastCell = document.querySelector(`.sudokuCell[data-row="${lastInteractedRow}"][data-col="${lastInteractedCol}"]`);
-                lastCell.value = num;
+                if(!lastCell.classList.contains('.presetSudokuCell')){
+                    lastCell.value = num;
+                }
             }
 
             createSudokuGrid(currPuzzle);
@@ -176,23 +181,24 @@
         });
     </script>
 
-    <body class="bg-gradient-to-r from-blue-100 to-green-200 font-sans">
+    <body class="bg-cyan-100 font-sans">
         <!--Add welcome modal here with app description and instructions (carosel of instructions)-->
         <section id= "header" class="container mx-auto p-6 md:py-10 md:px-8">
             <div class="flex items-center text-center justify-center">
-                <h1 class="flex items-center justify-center font-bold text-4xl">PuzzlePop</h1>
+                <h1 class="flex items-center justify-center font-bold text-4xl text-cyan-700">PuzzlePop</h1>
             </div>
+            <h3 class="flex items-center justify-center font-semibold text-xl text-cyan-700">Complete a round of Sudoku to return to your app!</h1>
         </section>
 
-        <section id= "easySudoku" class="container mx-auto py-6 px-4 sm:p-6 md:py-10 md:px-8">
+        <section id= "easySudoku" class="container mx-auto py-4 px-4 sm:p-6 md:py-10 md:px-8">
             <div class="flex items-center justify-center">
             <div class="bg-white shadow rounded-lg p-6 flex flex-col items-center gap-4">
                 <div id="easySudokuContainer"class="grid grid-cols-4 gap-px bg-gray-400 p-px"></div>
                 <div class="text-center items-center">
-                    <button id="enter1" class="bg-gray-500 text-white font-bold py-2 px-4 rounded-lg">1</button>
-                    <button id="enter2" class="bg-gray-500 text-white font-bold py-2 px-4 rounded-lg">2</button>
-                    <button id="enter3" class="bg-gray-500 text-white font-bold py-2 px-4 rounded-lg">3</button>
-                    <button id="enter4" class="bg-gray-500 text-white font-bold py-2 px-4 rounded-lg">4</button>
+                    <button id="enter1" class="bg-cyan-500 text-white font-bold py-2 px-4 rounded-lg">1</button>
+                    <button id="enter2" class="bg-cyan-500 text-white font-bold py-2 px-4 rounded-lg">2</button>
+                    <button id="enter3" class="bg-cyan-500 text-white font-bold py-2 px-4 rounded-lg">3</button>
+                    <button id="enter4" class="bg-cyan-500 text-white font-bold py-2 px-4 rounded-lg">4</button>
                 </div>
                 <div class="text-center items-center">
                     <input type="text" readonly="true" id="feedback" class="p-2 w-full max-w-xs text-xl text-center text-rose-600"></input>
