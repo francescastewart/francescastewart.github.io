@@ -6,8 +6,6 @@
         <title>PuzzlePop</title>
         <script src="https://cdn.tailwindcss.com/"></script>
         <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
-        <script src="https://unpkg.com/dialog-polyfill@0.5.6/dist/dialog-polyfill.js"></script>
-        <link rel="stylesheet" href="https://unpkg.com/dialog-polyfill@0.5.6/dist/dialog-polyfill.css">
     </head>
     
     <style>
@@ -200,12 +198,18 @@
                 document.getElementById("helpTextDiv").innerHTML = helpText[currentHelpText];
             }
 
+            function getHelpModal(){
+                document.getElementById("helpModal").classList.remove('hidden');
+            }
+
             createSudokuGrid(currPuzzle);
             //Button Function Mapping
             document.getElementById("submitButton")
                 .addEventListener("click", checkPuzzle);
             document.getElementById("resetButton")
                 .addEventListener("click", resetPuzzle);
+            document.getElementById("helpButton")
+                .addEventListener("click", getHelpModal);
             document.getElementById("helpTextDiv").innerHTML = helpText[currentHelpText];
             document.getElementById("nextHelpText")
                 .addEventListener("click", goToNextHelpText);
@@ -228,11 +232,13 @@
                     element.classList.add('border-black-700');
                 });
             });
-            const dialog = document.getElementById("dialog");
-            if (typeof dialog.showModal !== "function") {
-                dialogPolyfill.registerDialog(dialog);
-            }
-            dialog.showModal();
+            
+            //Help page on load
+            const modal = document.getElementById("helpModal");
+            modal.classList.remove("hidden"); // show on load
+            document.getElementById("closeModal").addEventListener("click", () => {
+                modal.classList.add("hidden");
+            });
 
         });
     </script>
@@ -273,18 +279,18 @@
                     <div id="buttonContainer" class="grid grid-cols-3 gap-4 justify-center">
                         <button id="submitButton" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg">Submit</button>
                         <button id="resetButton" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">Reset</button>
-                        <button command="show-modal" commandfor="dialog" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg">Help</button>
+                        <button id= "helpButton" command="show-modal" commandfor="dialog" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg">Help</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <el-dialog>
-            <dialog id="dialog" aria-labelledby="dialog-title" class="fixed inset-0 size-auto max-h-none max-w-none overflow-y-auto bg-transparent backdrop:bg-transparent">
-                <el-dialog-backdrop class="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"></el-dialog-backdrop>
+        <div id="helpModal">
+            <div id="dialog" class="fixed inset-0 size-auto max-h-none max-w-none overflow-y-auto bg-transparent backdrop:bg-transparent">
+                <backdrop class="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"></backdrop>
                 
                 <div tabindex="0" class="flex min-h-full items-end justify-center p-4 text-center focus:outline-none sm:items-center sm:p-0">
-                <el-dialog-panel class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95">
+                <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95">
                     <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                         <div class="sm:flex sm:items-start">
                             <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
@@ -295,13 +301,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                        <button type="button" command="close" commandfor="dialog" class="inline-flex w-full justify-center bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg px-3 py-2 text-sm shadow-xs sm:ml-3 sm:w-auto">Close</button>
+                    <div class="bg-gray-50 px-4 py-3 flex flex-row-reverse sm:px-6 gap-2">
+                        <button id = "closeModal" type="button" class="inline-flex w-full justify-center bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg px-3 py-2 text-sm shadow-xs sm:ml-3 sm:w-auto">Close</button>
                         <button id="nextHelpText" type="button" class="inline-flex w-full justify-center bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-lg px-3 py-2 text-sm shadow-xs sm:ml-3 sm:w-auto">Next</button>
                     </div>
-                </el-dialog-panel>
                 </div>
-            </dialog>
-        </el-dialog>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
