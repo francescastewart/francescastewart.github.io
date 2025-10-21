@@ -76,14 +76,116 @@
                 [3, 1, 2, 4]
             ];
 
+            const puzzle5 = [
+                [2,0,0,0],
+                [3,4,0,0],
+                [1,0,0,2],
+                [4,0,1,0],
+            ]
+
+            const solvedPuzzle5 = [
+                [2,1,3,4],
+                [3,4,2,1],
+                [1,3,4,2],
+                [4,2,1,3],
+            ]
+
+            const puzzle6 = [
+                [0,0,4,2],
+                [0,0,3,0],
+                [2,3,0,0],
+                [0,0,2,0],
+            ]
+
+            const solvedPuzzle6 = [
+                [3,1,4,2],
+                [4,2,3,1],
+                [2,3,1,4],
+                [1,4,2,3],
+            ]
+
+            const puzzle7 = [
+                [0, 0, 0, 0],
+                [0, 0, 2, 4],
+                [3, 2, 0, 0],
+                [0, 0, 3, 2]
+            ]
+
+            const solvedPuzzle7 = [
+                [2,4, 1, 3],
+                [1, 3, 2, 4],
+                [3, 2, 4, 1],
+                [4, 1, 3, 2]
+            ]
+
+            const puzzle8 = [
+                [0, 3, 0, 1],
+                [1, 0, 0, 0],
+                [4, 0, 1, 3],
+                [0, 1, 0, 0]
+            ]
+
+            const solvedPuzzle8 = [
+                [2, 3, 4, 1],
+                [1, 4, 3, 2],
+                [4, 2, 1, 3],
+                [3, 1, 2, 4]
+            ]
+
+            const puzzle9 = [
+                [0, 1, 0, 0],
+                [0, 0, 0, 3],
+                [4, 0, 0, 1],
+                [0, 3, 2, 4]
+            ]
+
+            const solvedPuzzle9 = [
+                [3, 1, 4, 2],
+                [2, 4, 1, 3],
+                [4, 2, 3, 1],
+                [0, 3, 2, 4]
+            ]
+
+            const puzzle10 = [
+                [0,0,0,2],
+                [3,0,1,0],
+                [0,3,0,0],
+                [4,0,0,0]
+            ]
+
+            const solvedPuzzle10 = [
+                [1,4,3,2],
+                [3,2,1,4],
+                [2,3,4,1],
+                [4,1,2,3]
+            ]
+
             
             //*********************END OF PUZZLES*********************
             const completePuzzle1 = {"puzzle":puzzle1, "solution":solvedPuzzle1}
             const completePuzzle2 = {"puzzle":puzzle2, "solution":solvedPuzzle2}
             const completePuzzle3 = {"puzzle":puzzle3, "solution":solvedPuzzle3}
             const completePuzzle4 = {"puzzle":puzzle4, "solution":solvedPuzzle4}
-            const allPuzzles = [completePuzzle1, completePuzzle2, completePuzzle3, completePuzzle4]
-            var random = Math.floor(Math.random() * 4); 
+            const completePuzzle5 = {"puzzle":puzzle5, "solution":solvedPuzzle5}
+            const completePuzzle6 = {"puzzle":puzzle6, "solution":solvedPuzzle6}
+            const completePuzzle7 = {"puzzle":puzzle7, "solution":solvedPuzzle7}
+            const completePuzzle8 = {"puzzle":puzzle8, "solution":solvedPuzzle8}
+            const completePuzzle9 = {"puzzle":puzzle9, "solution":solvedPuzzle9}
+            const completePuzzle10 = {"puzzle":puzzle10, "solution":solvedPuzzle10}
+            const allPuzzles = [completePuzzle1, completePuzzle2, completePuzzle3, completePuzzle4, completePuzzle5, completePuzzle6, completePuzzle7, completePuzzle8, completePuzzle9, completePuzzle10]
+            
+            //Prevent user from getting the same puzzle consecutively by saving the puzzle # to local storage
+            let lastPuzzle = localStorage.getItem("lastPuzzle");
+            if(lastPuzzle != null){
+                lastPuzzle = parseInt(lastPuzzle);
+            }
+            let random
+            do{
+                random = Math.floor(Math.random() * allPuzzles.length); 
+            }
+            while(random === lastPuzzle)
+            localStorage.setItem("lastPuzzle", random);
+
             var currPuzzle =allPuzzles[random].puzzle; //make random
             var currSolution = allPuzzles[random].solution; //make random
             var lastInteractedRow = 0;
@@ -91,9 +193,9 @@
 
             let currentHelpText =0;
             const helpText = [
-                "PuzzlePop is here to help you on your screen time journey by taking small breaks in-between your scrolling activity. The goal is to complete one round of Sudoku.<br><br>To play 4x4 Sudoku, fill a 4x4 grid with the numbers 1,2,3, and 4 so that each number appears <b>exactly once</b> in each <b>row, each column, and each of the four 2x2 boxes.</b> Use the given numbers as clues, and deduce the placement of the missing numbers by cross-referencing what's already in each row, column, and box. ",
-                `<img src="src/sudoku-how-to-instructions.jpg" alt="Sudoku instructions" class="mx-auto rounded-lg shadow-md">`,
-                "Here are some tips to help you solve:<br><br><b>Single Possibility:</b> If a cell is the only one in its row, column, or region that can contain a particular number, then it must contain that number.<br><b>Exclusion:</b> If a number is already present in a row or column, look to place that number in other regions in the same row or column where it is not present.<br><b>Look for Grid Symmetry:</b> Sometimes, the arrangement of given numbers has a symmetrical pattern that can help predict the placement of other numbers."
+                "PuzzlePop is here to help you on your screen time journey by taking small breaks in-between your scrolling activity. The goal is to complete one round of Sudoku.<br><br>To play 4x4 Sudoku, fill a 4x4 grid with the numbers 1,2,3, and 4 so that each number appears <b>exactly once</b> in each <b>row, each column, and each of the four 2x2 boxes.</b> Use the given numbers as clues, and deduce the placement of the missing numbers by cross-referencing what's already in each row, column, and box.<br><br>Page 1/3 ",
+                `<img src="src/sudoku-how-to-instructions.jpg" alt="Sudoku instructions" class="mx-auto rounded-lg shadow-md"><p><br><br>Page 2/3</p>`,
+                "Here are some tips to help you solve:<br><br><b>Single Possibility:</b> If a cell is the only one in its row, column, or region that can contain a particular number, then it must contain that number.<br><b>Exclusion:</b> If a number is already present in a row or column, look to place that number in other regions in the same row or column where it is not present.<br><b>Look for Grid Symmetry:</b> Sometimes, the arrangement of given numbers has a symmetrical pattern that can help predict the placement of other numbers.<br><br>Page 3/3"
             ]
 
             //This function checks the current input and returns the user's input as a 2D array
