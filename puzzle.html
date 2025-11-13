@@ -250,6 +250,7 @@
                 // highlight the tapped cell
                 e.currentTarget.classList.add('highlighted');
             }
+            
             function createSudokuGrid(puzzle) {
                 container.innerHTML = '';
 
@@ -337,7 +338,6 @@
             
             //Help page on load
             const modal = document.getElementById("helpModal");
-            modal.classList.remove("hidden");
             document.getElementById("closeModal").addEventListener("click", () => {
                 modal.classList.add("hidden");
             });
@@ -387,7 +387,7 @@
             </div>
         </section>
 
-        <div id="helpModal">
+        <div id="helpModal" class="hidden">
             <div id="dialog" class="fixed inset-0 size-auto max-h-none max-w-none overflow-y-auto bg-transparent backdrop:bg-transparent">
                 <backdrop class="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"></backdrop>
                 
